@@ -61,7 +61,33 @@ footer{padding:30px;text-align:center;color:#7e8ca3}
 }
 </style>
 </head>
-<body>
+ <script>
+function show(judul, deskripsi) {
+  let panel = document.getElementById("room-panel");
+
+  if (!panel) {
+    panel = document.createElement("section");
+    panel.id = "room-panel";
+    panel.className = "panel";
+    document.querySelector("main").appendChild(panel);
+  }
+
+  panel.innerHTML = `
+    <h2>${judul}</h2>
+    <p class="sub">${deskripsi}</p>
+    <div class="task">
+      <span>● RUANGAN AKTIF</span>
+      <p>Selamat datang di ${judul} NicoVerse.</p>
+    </div>
+    <button onclick="document.getElementById('room-panel').remove()">
+      Kembali
+    </button>
+  `;
+
+  panel.scrollIntoView({ behavior: "smooth" });
+}
+</script>
+ <body>
 
 <header>
  <div class="logo">🌌 NicoVerse</div>
