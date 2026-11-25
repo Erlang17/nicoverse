@@ -64,4 +64,437 @@ position:absolute;bottom:-34px;left:0;width:100%;height:100px;
 background:#29394b;transform:skewY(-5deg);border-top:4px solid #476078
 }
 .road:after{
-content:"";position:absolute;top:48px;width:100
+content:"";position:absolute;top:48px;width:100%;
+border-top:3px dashed #c3d3df77
+}
+.buildrow{
+position:absolute;z-index:2;bottom:58px;left:3%;right:3%;
+display:flex;justify-content:space-around;align-items:end;gap:6px
+}
+.building{
+width:24%;max-width:165px;min-width:60px;
+border:1px solid #7898b7;border-radius:9px 9px 4px 4px;
+background:linear-gradient(90deg,#263f5b,#456888 50%,#203a55);
+box-shadow:6px 8px 0 #0a192b99;padding:7px 3px;
+text-align:center;color:white;transition:.2s
+}
+.building:before{
+content:"";display:block;height:8px;margin:-13px -5px 5px;
+background:#7595b3;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%)
+}
+.building:hover{transform:translateY(-7px);filter:brightness(1.2)}
+.building .ico{font-size:24px;display:block;margin:5px}
+.building strong{font-size:9px;display:block}
+.building small{font-size:8px;color:#c0d7ec}
+.b1{height:132px}.b2{height:108px}.b3{height:145px}.b4{height:120px}
+.windows{
+height:25px;max-width:70px;margin:7px auto 4px;
+background:repeating-linear-gradient(90deg,#91edf3 0 7px,transparent 7px 13px)
+}
+.person{
+position:absolute;z-index:4;bottom:39px;font-size:20px;
+animation:walk 8s ease-in-out infinite
+}
+.p1{left:10%}.p2{left:70%;animation-delay:-3s}
+.p3{left:43%;animation-delay:-6s}
+@keyframes walk{
+0%,100%{transform:translateX(0)}
+50%{transform:translateX(55px)}
+}
+.hint{
+position:absolute;z-index:5;bottom:8px;left:9px;
+font-size:10px;background:#0b192bc9;padding:6px 8px;border-radius:7px
+}
+.heading{
+display:flex;justify-content:space-between;align-items:center;
+margin:22px 0 12px
+}
+.heading h2{font-size:19px;margin:0}
+.heading span{font-size:11px;color:var(--muted)}
+.rooms{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.card{
+padding:14px;border:1px solid var(--line);border-radius:15px;
+background:linear-gradient(145deg,#1b2e49,#111e31);
+min-height:165px;display:flex;flex-direction:column
+}
+.icon{
+font-size:25px;background:#2a4162;border-radius:12px;
+width:44px;height:44px;display:grid;place-items:center;margin-bottom:9px
+}
+.card h3{font-size:14px;margin:0 0 5px}
+.card p{font-size:11px;color:var(--muted);line-height:1.45;flex:1;margin:0 0 10px}
+.btn{
+border:0;border-radius:9px;background:linear-gradient(135deg,#899dff,#6278e6);
+color:white;padding:10px 12px;font-size:11px;font-weight:bold
+}
+.secondary{background:#263c59;border:1px solid #425b7b}
+.panel{
+display:none;margin:18px 0;padding:17px;border:1px solid #4c6990;
+border-radius:17px;background:linear-gradient(145deg,#1b304c,#101d30);
+scroll-margin-top:75px
+}
+.panel.active{display:block;animation:fade .25s ease}
+@keyframes fade{
+from{opacity:0;transform:translateY(8px)}
+to{opacity:1;transform:none}
+}
+.paneltop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.paneltop h2{font-size:20px;margin:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.box{background:#0e1b2d;border:1px solid #2e4768;border-radius:12px;padding:13px}
+.box h3{font-size:13px;margin:0 0 10px}
+label{display:block;font-size:11px;color:#bacbe0;margin:9px 0 5px}
+input,textarea,select{
+width:100%;padding:10px;border:1px solid #3b5576;border-radius:8px;
+background:#0a1728;color:white;font-size:13px
+}
+textarea{min-height:85px;resize:vertical}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.note{font-size:11px;color:var(--muted);line-height:1.55}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.member{
+text-align:center;background:#192c45;border:1px solid var(--line);
+border-radius:12px;padding:12px
+}
+.member b{display:block;font-size:12px;margin:5px}
+.member small{font-size:10px;color:var(--muted)}
+.avatar{font-size:27px}
+.ready{color:var(--green);font-size:10px;margin-top:6px}
+.item{
+display:flex;justify-content:space-between;gap:8px;
+align-items:center;padding:10px 0;border-bottom:1px solid #2a405e
+}
+.item:last-child{border:0}
+.item b{display:block;font-size:12px}
+.item small{
+display:block;color:var(--muted);font-size:10px;
+max-width:220px;overflow-wrap:anywhere
+}
+.green{background:linear-gradient(135deg,#2eaf87,#21846e)}
+footer{text-align:center;padding:28px 8px;color:#7185a2;font-size:11px}
+.toast{
+position:fixed;z-index:20;bottom:18px;left:50%;
+transform:translate(-50%,20px);opacity:0;
+background:#edf4ff;color:#17263b;padding:11px 15px;
+border-radius:10px;font-size:12px;font-weight:bold;
+transition:.2s;pointer-events:none
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:720px){
+.rooms{grid-template-columns:repeat(2,1fr)}
+.grid{grid-template-columns:1fr}
+.scene{height:275px}
+.team{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){
+.city{padding:11px}.scene{height:250px}
+.buildrow{bottom:55px}
+.b1{height:112px}.b2{height:94px}.b3{height:124px}.b4{height:105px}
+.building .ico{font-size:21px}
+.building strong{font-size:8px}
+.person{font-size:17px}
+.card{padding:11px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+<div class="logo"><span class="mark">🌌</span> NicoVerse</div>
+<div class="live">● DEMO SYSTEM <span id="clock"></span></div>
+</header>
+
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">VIRTUAL CONTENT HEADQUARTERS</div>
+<h1>Explore More,<br>Know More.</h1>
+<p class="muted">Pusat operasi konten NicoVerse.</p>
+</section>
+
+<section class="city">
+<div class="cityhead">
+<div>
+<h2>🏙️ NicoVerse City</h2>
+<p class="muted">Pilih gedung untuk membuka ruang kerja.</p>
+</div>
+<span class="muted" style="font-size:11px">4 DEPARTEMEN</span>
+</div>
+
+<div class="scene">
+<div class="stars"></div><div class="moon"></div>
+<div class="hill"></div><div class="road"></div>
+<div class="buildrow">
+<button class="building b1" onclick="openRoom('ideas')">
+<span class="ico">💡</span><strong>IDEA LAB</strong>
+<div class="windows"></div><small>Research</small>
+</button>
+<button class="building b2" onclick="openRoom('script')">
+<span class="ico">✍️</span><strong>SCRIPT STUDIO</strong>
+<div class="windows"></div><small>Writing</small>
+</button>
+<button class="building b3" onclick="openRoom('video')">
+<span class="ico">🎬</span><strong>VIDEO STUDIO</strong>
+<div class="windows"></div><small>Production</small>
+</button>
+<button class="building b4" onclick="openRoom('publish')">
+<span class="ico">📡</span><strong>PUBLISHING</strong>
+<div class="windows"></div><small>Approval</small>
+</button>
+</div>
+<div class="person p1">🚶</div>
+<div class="person p2">🧑‍💻</div>
+<div class="person p3">🚶‍♀️</div>
+<div class="hint">KLIK GEDUNG UNTUK MASUK</div>
+</div>
+</section>
+
+<div class="heading"><h2>Departemen</h2><span>4 ruang kerja</span></div>
+<section class="rooms">
+<article class="card">
+<div class="icon">💡</div><h3>Idea Lab</h3>
+<p>Temukan topik fakta, teknologi, sains, dan sejarah.</p>
+<button class="btn" onclick="openRoom('ideas')">Masuk ruangan →</button>
+</article>
+<article class="card">
+<div class="icon">✍️</div><h3>Script Studio</h3>
+<p>Susun naskah video pendek dan caption.</p>
+<button class="btn" onclick="openRoom('script')">Masuk ruangan →</button>
+</article>
+<article class="card">
+<div class="icon">🎬</div><h3>Video Studio</h3>
+<p>Rencanakan visual, suara, dan produksi video.</p>
+<button class="btn" onclick="openRoom('video')">Masuk ruangan →</button>
+</article>
+<article class="card">
+<div class="icon">📡</div><h3>Publishing Room</h3>
+<p>Periksa dan setujui konten sebelum dipublikasikan.</p>
+<button class="btn" onclick="openRoom('publish')">Masuk ruangan →</button>
+</article>
+</section>
+
+<section id="panel" class="panel">
+<div class="paneltop">
+<h2 id="title">Ruang kerja</h2>
+<button class="btn secondary" onclick="closeRoom()">✕ Tutup</button>
+</div>
+<p id="desc" class="muted" style="font-size:13px"></p>
+<div id="content"></div>
+</section>
+
+<div class="heading"><h2>Tim virtual</h2><span>Karakter demo</span></div>
+<section class="team">
+<div class="member">
+<div class="avatar">🧑‍🔬</div><b>Raka • Research</b>
+<small>Mencari bahan & fakta</small><div class="ready">● Siap bertugas</div>
+</div>
+<div class="member">
+<div class="avatar">👩‍💻</div><b>Naya • Writer</b>
+<small>Menyusun naskah</small><div class="ready">● Siap bertugas</div>
+</div>
+<div class="member">
+<div class="avatar">🧑‍🎨</div><b>Dio • Producer</b>
+<small>Merancang video</small><div class="ready">● Siap bertugas</div>
+</div>
+</section>
+
+<footer>
+NicoVerse • Explore More, Know More.<br>
+Versi interaktif awal. AI sungguhan dan koneksi media sosial belum diaktifkan.
+</footer>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script>
+const info={
+ideas:["💡 Idea Lab","Riset topik fakta, teknologi, sains, dan sejarah."],
+script:["✍️ Script Studio","Ubah ide menjadi naskah konten."],
+video:["🎬 Video Studio","Rencanakan visual, narasi, dan produksi video."],
+publish:["📡 Publishing Room","Semua konten menunggu persetujuan manual."]
+};
+
+let queue=JSON.parse(localStorage.getItem("nvQueue")||"[]");
+
+function openRoom(k){
+document.getElementById("title").textContent=info[k][0];
+document.getElementById("desc").textContent=info[k][1];
+document.getElementById("panel").classList.add("active");
+const c=document.getElementById("content");
+
+if(k==="ideas"){
+c.innerHTML=`
+<div class="grid">
+<div class="box">
+<h3>🔎 Generator ide demo</h3>
+<label>Kategori</label>
+<select id="cat">
+<option>Fakta menarik</option><option>Teknologi</option>
+<option>Sains</option><option>Sejarah</option>
+</select>
+<div class="actions"><button class="btn" onclick="idea()">Buat ide</button></div>
+<p id="result" class="note">Pilih kategori untuk melihat ide contoh.</p>
+</div>
+<div class="box">
+<h3>Alur riset</h3>
+<p class="note">1. Pilih kategori.<br>2. Tinjau ide awal.<br>
+3. Verifikasi dengan sumber tepercaya.<br>4. Lanjutkan ke penulisan naskah.</p>
+</div>
+</div>`;
+}
+
+if(k==="script"){
+c.innerHTML=`
+<div class="grid">
+<div class="box">
+<h3>📝 Penulis naskah</h3>
+<label>Judul konten</label><input id="stitle" placeholder="Judul konten">
+<label>Naskah</label><textarea id="sbody" placeholder="Tulis naskah di sini..."></textarea>
+<label>Platform tujuan</label>
+<select id="platform">
+<option>TikTok</option><option>YouTube Shorts</option>
+<option>Instagram Reels</option><option>Facebook</option>
+</select>
+<div class="actions"><button class="btn" onclick="saveDraft()">Simpan draft</button></div>
+</div>
+<div class="box">
+<h3>Tips naskah</h3>
+<p class="note">Buka dengan hook, sampaikan informasi dengan jelas,
+periksa fakta, lalu tutup dengan kesimpulan.</p>
+</div>
+</div>`;
+}
+
+if(k==="video"){
+c.innerHTML=`
+<div class="grid">
+<div class="box">
+<h3>🎞️ Rencana produksi</h3>
+<label>Judul video</label><input id="vtitle" placeholder="Judul video">
+<label>Gaya visual</label>
+<select id="style">
+<option>Dokumenter singkat</option><option>Animasi edukasi</option>
+<option>Visual fakta cepat</option>
+</select>
+<label>Catatan adegan</label>
+<textarea id="notes" placeholder="Gambaran visual per adegan..."></textarea>
+<div class="actions"><button class="btn" onclick="saveVideo()">Simpan rencana</button></div>
+</div>
+<div class="box">
+<h3>Checklist</h3>
+<p class="note">□ Naskah diperiksa<br>□ Narasi siap<br>
+□ Visual sesuai topik<br>□ Aset punya izin penggunaan<br>□ Hasil akhir ditinjau</p>
+</div>
+</div>`;
+}
+
+if(k==="publish"){
+c.innerHTML=`
+<div class="box">
+<h3>🛡️ Antrean persetujuan</h3>
+<p class="note">Tombol persetujuan hanya mengubah status demo.
+Tidak ada unggahan ke media sosial.</p>
+<div id="queue"></div>
+</div>`;
+renderQueue();
+}
+document.getElementById("panel").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function closeRoom(){
+document.getElementById("panel").classList.remove("active");
+}
+
+function idea(){
+let x=document.getElementById("cat").value;
+let examples={
+"Fakta menarik":"Gurita memiliki tiga jantung. Telusuri fungsi masing-masing jantung.",
+"Teknologi":"Bagaimana GPS menentukan lokasi dari sinyal satelit?",
+"Sains":"Mengapa kilat terlihat sebelum suara guntur terdengar?",
+"Sejarah":"Bagaimana jalur perdagangan kuno menukar ilmu dan budaya?"
+};
+document.getElementById("result").textContent=
+"Ide contoh: "+examples[x]+" Verifikasi fakta sebelum digunakan.";
+}
+
+function add(title,detail){
+if(!title.trim()){toast("Isi judul terlebih dahulu.");return}
+queue.push({
+id:Date.now(),title,detail,status:"Menunggu persetujuan"
+});
+localStorage.setItem("nvQueue",JSON.stringify(queue));
+toast("Draft masuk antrean persetujuan.");
+}
+
+function saveDraft(){
+add(
+document.getElementById("stitle").value,
+document.getElementById("platform").value+" • "+
+document.getElementById("sbody").value
+);
+}
+
+function saveVideo(){
+add(
+document.getElementById("vtitle").value,
+"Rencana video • "+document.getElementById("style").value+
+" • "+document.getElementById("notes").value
+);
+}
+
+function renderQueue(){
+let q=document.getElementById("queue");
+if(!q)return;
+if(!queue.length){
+q.innerHTML='<p class="note">Belum ada konten dalam antrean.</p>';
+return;
+}
+q.innerHTML=queue.map(x=>`
+<div class="item">
+<div>
+<b>${esc(x.title)}</b>
+<small>${esc(x.detail.slice(0,90))}</small>
+<small style="color:${x.status.startsWith("Disetujui")?"#62e6ae":"#ffd27a"}">${x.status}</small>
+</div>
+<div class="actions">
+<button class="btn green" onclick="approve(${x.id})">Setujui</button>
+<button class="btn secondary" onclick="removeItem(${x.id})">Hapus</button>
+</div>
+</div>`).join("");
+}
+
+function approve(id){
+let x=queue.find(a=>a.id===id);
+if(x){
+x.status="Disetujui (demo)";
+localStorage.setItem("nvQueue",JSON.stringify(queue));
+renderQueue();
+toast("Disetujui dalam demo, belum dipublikasikan.");
+}
+}
+
+function removeItem(id){
+queue=queue.filter(x=>x.id!==id);
+localStorage.setItem("nvQueue",JSON.stringify(queue));
+renderQueue();
+}
+
+function esc(s){
+return String(s).replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+function toast(s){
+let t=document.getElementById("toast");
+t.textContent=s;t.classList.add("show");
+setTimeout(()=>t.classList.remove("show"),2200);
+}
+
+function clock(){
+document.getElementById("clock").textContent=
+new Date().toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"});
+}
+clock();setInterval(clock,30000);
+</script>
+</body>
+</html>
