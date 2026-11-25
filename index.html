@@ -3,114 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NicoVerse - AI Content HQ</title>
+<meta name="theme-color" content="#10182b">
+<title>NicoVerse — Virtual AI Headquarters</title>
 <style>
+:root{
+--bg:#0b1220;--panel:#14233a;--line:#304968;
+--text:#f4f7ff;--muted:#a1b2cc;--blue:#8195ff;
+--green:#62e6ae;--cyan:#65d8ed
+}
 *{box-sizing:border-box}
 body{
- margin:0;background:#101522;color:white;
- font-family:Arial,sans-serif;
+margin:0;
+background:radial-gradient(ellipse at 50% -15%,#29466d,#111b2e 48%,var(--bg) 80%);
+color:var(--text);font-family:Arial,sans-serif
 }
-header{
- padding:20px 7%;display:flex;
- justify-content:space-between;align-items:center;
- background:#171f30;border-bottom:1px solid #303b50;
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.top{
+position:sticky;top:0;z-index:9;display:flex;
+justify-content:space-between;align-items:center;
+padding:12px 4%;background:#0c1525ed;
+border-bottom:1px solid var(--line)
 }
-.logo{font-size:24px;font-weight:bold;color:#8c9eff}
-.status{color:#65e6a5;font-size:13px}
-main{padding:35px 7%}
-h1{font-size:32px;margin-bottom:8px}
-.sub{color:#9eabc1}
+.logo{font-size:19px;font-weight:bold;display:flex;gap:10px;align-items:center}
+.mark{background:linear-gradient(140deg,#91a3ff,#536bd7);padding:9px;border-radius:12px}
+.live{font-size:11px;color:var(--green)}
+.wrap{width:min(1100px,94%);margin:auto}
+.hero{padding:28px 0 8px}
+.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:2px;font-weight:bold}
+h1{font-size:clamp(28px,6vw,42px);line-height:1.1;margin:8px 0}
+.muted{color:var(--muted);line-height:1.5}
 .city{
- margin-top:30px;padding:25px;border-radius:18px;
- background:linear-gradient(135deg,#253b59,#17283c);
- border:1px solid #405675;
+margin:18px 0 24px;padding:16px;border:1px solid #3b587c;
+border-radius:22px;background:linear-gradient(145deg,#1b3655,#12243a);
+box-shadow:0 18px 45px #0005
 }
-.city h2{margin-top:0}
-.buildings{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:15px;margin-top:22px;
+.cityhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cityhead h2{font-size:18px;margin:0}
+.cityhead p{font-size:12px;margin:5px 0}
+.scene{
+height:310px;margin-top:12px;position:relative;overflow:hidden;
+border-radius:15px;
+background:linear-gradient(#142d49 0%,#24506a 58%,#286064 59%,#183d4c 100%)
 }
-.building{
- background:#202e43;border:1px solid #455a78;
- border-radius:14px;padding:20px;
- min-height:130px;
+.stars{
+position:absolute;inset:0;
+background-image:radial-gradient(#d5efff 1px,transparent 1.5px);
+background-size:47px 43px;opacity:.45
 }
-.icon{font-size:32px}
-.building h3{margin:10px 0 5px}
-.building p{color:#aab8cc;font-size:13px}
-button{
- background:#7188ff;color:white;border:0;
- padding:11px 16px;border-radius:9px;
- font-weight:bold;cursor:pointer;
+.moon{
+position:absolute;right:12%;top:24px;width:42px;height:42px;
+border-radius:50%;background:#ffe6b2;box-shadow:0 0 35px #ffe6b277
 }
-.panel{
- margin-top:25px;background:#1a2435;
- padding:22px;border-radius:15px;
- border:1px solid #303e55;
+.hill{
+position:absolute;bottom:62px;left:-10%;width:120%;height:90px;
+border-radius:50% 50% 0 0;background:#1c5b60
 }
-.task{
- padding:13px;margin-top:12px;
- background:#26344a;border-radius:9px;
- color:#cbd5e5;
+.road{
+position:absolute;bottom:-34px;left:0;width:100%;height:100px;
+background:#29394b;transform:skewY(-5deg);border-top:4px solid #476078
 }
-.task span{color:#65e6a5}
-footer{padding:30px;text-align:center;color:#7e8ca3}
-@media(max-width:500px){
- .buildings{grid-template-columns:1fr}
- h1{font-size:27px}
-}
-</style>
-</head>
-<script>
-function show(judul, deskripsi) {
-  let panel = document.getElementById("room-panel");
-
-  if (!panel) {
-    panel = document.createElement("section");
-    panel.id = "room-panel";
-    panel.className = "panel";
-    document.querySelector("main").appendChild(panel);
-  }
-
-  panel.innerHTML = `
-    <h2>${judul}</h2>
-    <p class="sub">${deskripsi}</p>
-    <div class="task">
-      <span>● RUANGAN AKTIF</span>
-      <p>Selamat datang di ${judul} NicoVerse.</p>
-    </div>
-    <button onclick="document.getElementById('room-panel').remove()">
-      Kembali
-    </button>
-  `;
-
-  panel.scrollIntoView({ behavior: "smooth" });
-}
-</script>
- <body>
-
-<header>
- <div class="logo">🌌 NicoVerse</div>
- <div class="status">● SYSTEM ONLINE</div>
-</header>
-
-<main>
- <h1>AI Content Headquarters</h1>
- <p class="sub">Explore More, Know More.</p>
-
- <section class="city">
-  <h2>🏙️ Virtual Office</h2>
-  <p class="sub">Selamat datang di pusat operasi NicoVerse.</p>
-
-  <div class="buildings">
-   <div class="building">
-    <div class="icon">💡</div>
-    <h3>Idea Lab</h3>
-    <p>Tempat mencari ide konten baru.</p>
-    <button onclick="show('Idea Lab','Tempat AI akan mengembangkan ide fakta, teknologi, sains, dan sejarah.')">Masuk</button>
-   </div>
-
-   <div class="building">
-    <div class="icon">✍️</div>
-    <h3>Script Studio</h3>
-    <p>Tempat pen
+.road:after{
+content:"";position:absolute;top:48px;width:100
