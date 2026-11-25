@@ -1,500 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10182b">
-<title>NicoVerse — Virtual AI Headquarters</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NicoVerse — AI Business HQ</title>
 <style>
-:root{
---bg:#0b1220;--panel:#14233a;--line:#304968;
---text:#f4f7ff;--muted:#a1b2cc;--blue:#8195ff;
---green:#62e6ae;--cyan:#65d8ed
-}
-*{box-sizing:border-box}
-body{
-margin:0;
-background:radial-gradient(ellipse at 50% -15%,#29466d,#111b2e 48%,var(--bg) 80%);
-color:var(--text);font-family:Arial,sans-serif
-}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.top{
-position:sticky;top:0;z-index:9;display:flex;
-justify-content:space-between;align-items:center;
-padding:12px 4%;background:#0c1525ed;
-border-bottom:1px solid var(--line)
-}
-.logo{font-size:19px;font-weight:bold;display:flex;gap:10px;align-items:center}
-.mark{background:linear-gradient(140deg,#91a3ff,#536bd7);padding:9px;border-radius:12px}
-.live{font-size:11px;color:var(--green)}
-.wrap{width:min(1100px,94%);margin:auto}
-.hero{padding:28px 0 8px}
-.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:2px;font-weight:bold}
-h1{font-size:clamp(28px,6vw,42px);line-height:1.1;margin:8px 0}
-.muted{color:var(--muted);line-height:1.5}
-.city{
-margin:18px 0 24px;padding:16px;border:1px solid #3b587c;
-border-radius:22px;background:linear-gradient(145deg,#1b3655,#12243a);
-box-shadow:0 18px 45px #0005
-}
-.cityhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.cityhead h2{font-size:18px;margin:0}
-.cityhead p{font-size:12px;margin:5px 0}
-.scene{
-height:310px;margin-top:12px;position:relative;overflow:hidden;
-border-radius:15px;
-background:linear-gradient(#142d49 0%,#24506a 58%,#286064 59%,#183d4c 100%)
-}
-.stars{
-position:absolute;inset:0;
-background-image:radial-gradient(#d5efff 1px,transparent 1.5px);
-background-size:47px 43px;opacity:.45
-}
-.moon{
-position:absolute;right:12%;top:24px;width:42px;height:42px;
-border-radius:50%;background:#ffe6b2;box-shadow:0 0 35px #ffe6b277
-}
-.hill{
-position:absolute;bottom:62px;left:-10%;width:120%;height:90px;
-border-radius:50% 50% 0 0;background:#1c5b60
-}
-.road{
-position:absolute;bottom:-34px;left:0;width:100%;height:100px;
-background:#29394b;transform:skewY(-5deg);border-top:4px solid #476078
-}
-.road:after{
-content:"";position:absolute;top:48px;width:100%;
-border-top:3px dashed #c3d3df77
-}
-.buildrow{
-position:absolute;z-index:2;bottom:58px;left:3%;right:3%;
-display:flex;justify-content:space-around;align-items:end;gap:6px
-}
-.building{
-width:24%;max-width:165px;min-width:60px;
-border:1px solid #7898b7;border-radius:9px 9px 4px 4px;
-background:linear-gradient(90deg,#263f5b,#456888 50%,#203a55);
-box-shadow:6px 8px 0 #0a192b99;padding:7px 3px;
-text-align:center;color:white;transition:.2s
-}
-.building:before{
-content:"";display:block;height:8px;margin:-13px -5px 5px;
-background:#7595b3;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%)
-}
-.building:hover{transform:translateY(-7px);filter:brightness(1.2)}
-.building .ico{font-size:24px;display:block;margin:5px}
-.building strong{font-size:9px;display:block}
-.building small{font-size:8px;color:#c0d7ec}
-.b1{height:132px}.b2{height:108px}.b3{height:145px}.b4{height:120px}
-.windows{
-height:25px;max-width:70px;margin:7px auto 4px;
-background:repeating-linear-gradient(90deg,#91edf3 0 7px,transparent 7px 13px)
-}
-.person{
-position:absolute;z-index:4;bottom:39px;font-size:20px;
-animation:walk 8s ease-in-out infinite
-}
-.p1{left:10%}.p2{left:70%;animation-delay:-3s}
-.p3{left:43%;animation-delay:-6s}
-@keyframes walk{
-0%,100%{transform:translateX(0)}
-50%{transform:translateX(55px)}
-}
-.hint{
-position:absolute;z-index:5;bottom:8px;left:9px;
-font-size:10px;background:#0b192bc9;padding:6px 8px;border-radius:7px
-}
-.heading{
-display:flex;justify-content:space-between;align-items:center;
-margin:22px 0 12px
-}
-.heading h2{font-size:19px;margin:0}
-.heading span{font-size:11px;color:var(--muted)}
-.rooms{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
-.card{
-padding:14px;border:1px solid var(--line);border-radius:15px;
-background:linear-gradient(145deg,#1b2e49,#111e31);
-min-height:165px;display:flex;flex-direction:column
-}
-.icon{
-font-size:25px;background:#2a4162;border-radius:12px;
-width:44px;height:44px;display:grid;place-items:center;margin-bottom:9px
-}
-.card h3{font-size:14px;margin:0 0 5px}
-.card p{font-size:11px;color:var(--muted);line-height:1.45;flex:1;margin:0 0 10px}
-.btn{
-border:0;border-radius:9px;background:linear-gradient(135deg,#899dff,#6278e6);
-color:white;padding:10px 12px;font-size:11px;font-weight:bold
-}
-.secondary{background:#263c59;border:1px solid #425b7b}
-.panel{
-display:none;margin:18px 0;padding:17px;border:1px solid #4c6990;
-border-radius:17px;background:linear-gradient(145deg,#1b304c,#101d30);
-scroll-margin-top:75px
-}
-.panel.active{display:block;animation:fade .25s ease}
-@keyframes fade{
-from{opacity:0;transform:translateY(8px)}
-to{opacity:1;transform:none}
-}
-.paneltop{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.paneltop h2{font-size:20px;margin:0}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.box{background:#0e1b2d;border:1px solid #2e4768;border-radius:12px;padding:13px}
-.box h3{font-size:13px;margin:0 0 10px}
-label{display:block;font-size:11px;color:#bacbe0;margin:9px 0 5px}
-input,textarea,select{
-width:100%;padding:10px;border:1px solid #3b5576;border-radius:8px;
-background:#0a1728;color:white;font-size:13px
-}
-textarea{min-height:85px;resize:vertical}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.note{font-size:11px;color:var(--muted);line-height:1.55}
-.team{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.member{
-text-align:center;background:#192c45;border:1px solid var(--line);
-border-radius:12px;padding:12px
-}
-.member b{display:block;font-size:12px;margin:5px}
-.member small{font-size:10px;color:var(--muted)}
-.avatar{font-size:27px}
-.ready{color:var(--green);font-size:10px;margin-top:6px}
-.item{
-display:flex;justify-content:space-between;gap:8px;
-align-items:center;padding:10px 0;border-bottom:1px solid #2a405e
-}
-.item:last-child{border:0}
-.item b{display:block;font-size:12px}
-.item small{
-display:block;color:var(--muted);font-size:10px;
-max-width:220px;overflow-wrap:anywhere
-}
-.green{background:linear-gradient(135deg,#2eaf87,#21846e)}
-footer{text-align:center;padding:28px 8px;color:#7185a2;font-size:11px}
-.toast{
-position:fixed;z-index:20;bottom:18px;left:50%;
-transform:translate(-50%,20px);opacity:0;
-background:#edf4ff;color:#17263b;padding:11px 15px;
-border-radius:10px;font-size:12px;font-weight:bold;
-transition:.2s;pointer-events:none
-}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:720px){
-.rooms{grid-template-columns:repeat(2,1fr)}
-.grid{grid-template-columns:1fr}
-.scene{height:275px}
-.team{grid-template-columns:1fr 1fr}
-}
-@media(max-width:400px){
-.city{padding:11px}.scene{height:250px}
-.buildrow{bottom:55px}
-.b1{height:112px}.b2{height:94px}.b3{height:124px}.b4{height:105px}
-.building .ico{font-size:21px}
-.building strong{font-size:8px}
-.person{font-size:17px}
-.card{padding:11px}
-}
-</style>
-</head>
+:root{--bg:#07111f;--panel:#101f33;--panel2:#152943;--line:#29425f;--text:#eef6ff;--muted:#9bb0c9;--cyan:#55d9f2;--green:#63e6ad;--gold:#ffd477}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% 0,#183657 0,transparent 35%),var(--bg);color:var(--text);font:14px system-ui,Arial}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);background:#081526dd;position:sticky;top:0;z-index:5}
+.brand{font-weight:900;font-size:20px;letter-spacing:.5px}.brand small{display:block;font-size:10px;color:var(--cyan);letter-spacing:2px}.badge{border:1px solid var(--line);border-radius:30px;padding:8px 12px;color:var(--green);font-size:11px}
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px)}nav{padding:18px;border-right:1px solid var(--line);background:#0a1728}nav button{display:block;width:100%;text-align:left;margin:4px 0;padding:12px;border:0;border-radius:10px;background:transparent;color:var(--muted);cursor:pointer}nav button.active,nav button:hover{background:#193451;color:white}.owner{margin-top:35px;padding:14px;border:1px solid var(--line);border-radius:12px;color:var(--muted)}.owner b{display:block;color:var(--gold);font-size:17px;margin-top:6px}
+main{padding:22px;max-width:1400px;width:100%;margin:auto}.eyebrow{color:var(--cyan);font-size:10px;letter-spacing:2px;font-weight:800}h1{font-size:clamp(23px,4vw,34px);margin:6px 0}h2{font-size:17px;margin:0 0 14px}.muted{color:var(--muted)}.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.metric,.panel,.dept{background:linear-gradient(145deg,var(--panel),#0c1a2b);border:1px solid var(--line);border-radius:15px;padding:16px}.metric small{color:var(--muted)}.metric strong{display:block;font-size:25px;margin-top:7px}.grid{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}.deptgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.dept{padding:13px;background:var(--panel2)}.dept b{display:block;margin:5px 0}.dept p{color:var(--muted);font-size:12px;line-height:1.5;margin:0}.rolecount{font-size:11px;color:var(--cyan)}
+button.action{background:linear-gradient(120deg,#1676a5,#3456b5);color:white;border:1px solid #4d9dc2;border-radius:9px;padding:10px 13px;font-weight:700;cursor:pointer;margin:5px 4px 0 0}button.secondary{background:#172b43;border-color:var(--line)}button:disabled{opacity:.4}
+.list{display:grid;gap:9px}.item{padding:12px;border:1px solid var(--line);border-radius:11px;background:#0c1a2b}.item strong{display:block}.item small{color:var(--muted)}.status{float:right;color:var(--gold);font-size:10px}.staff{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.person{background:#10243a;border:1px solid var(--line);padding:10px;border-radius:10px}.person b{display:block;font-size:12px}.person small{color:var(--muted);font-size:10px}
+.notice{border:1px solid #79602b;background:#302817;color:#ffe2a1;padding:12px;border-radius:10px;font-size:12px;line-height:1.5;margin-top:14px}
+input,select,textarea{width:100%;padding:11px;border-radius:9px;border:1px solid var(--line);background:#081626;color:white;margin:5px 0 10px}textarea{min-height:90px}.hidden{display:none}
+@media(max-width:850px){.layout{grid-template-columns:1fr}nav{display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line);padding:8px}nav button{white-space:nowrap;width:auto}.owner{display:none}.metrics{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.deptgrid{grid-template-columns:1fr 1fr}.staff{grid-template-columns:repeat(2,1fr)}main{padding:14px}}
+</style></head>
 <body>
-
-<header class="top">
-<div class="logo"><span class="mark">🌌</span> NicoVerse</div>
-<div class="live">● DEMO SYSTEM <span id="clock"></span></div>
-</header>
-
-<main class="wrap">
-<section class="hero">
-<div class="eyebrow">VIRTUAL CONTENT HEADQUARTERS</div>
-<h1>Explore More,<br>Know More.</h1>
-<p class="muted">Pusat operasi konten NicoVerse.</p>
-</section>
-
-<section class="city">
-<div class="cityhead">
-<div>
-<h2>🏙️ NicoVerse City</h2>
-<p class="muted">Pilih gedung untuk membuka ruang kerja.</p>
+<header><div class="brand">🌐 NicoVerse <small>AI BUSINESS OPERATIONS HQ</small></div><span class="badge">● RUANG KENDALI PEMILIK</span></header>
+<div class="layout">
+<nav>
+<button class="active" onclick="show('home',this)">⌂ Beranda</button>
+<button onclick="show('opportunities',this)">💰 Money Hunter</button>
+<button onclick="show('content',this)">🎬 Content Factory</button>
+<button onclick="show('products',this)">🛍️ Produk Digital</button>
+<button onclick="show('business',this)">🚀 Ide Bisnis</button>
+<button onclick="show('team',this)">👥 Karyawan AI</button>
+<button onclick="show('approval',this)">✅ Persetujuan</button>
+<button onclick="show('finance',this)">📊 Keuangan</button>
+<div class="owner">PEMILIK PERUSAHAAN<b>👑 Pemilik NicoVerse</b></div>
+</nav>
+<main>
+<section id="home">
+<div class="topline"><div><div class="eyebrow">AI-POWERED MONEY OPERATIONS</div><h1>Kantor yang bekerja mencari peluang uang.</h1><div class="muted">Cari peluang → validasi → produksi → pasarkan → ukur hasil.</div></div><span class="badge">MODE DEMO / BELUM TERHUBUNG AI</span></div>
+<div class="metrics">
+<div class="metric"><small>💡 Peluang ditemukan</small><strong id="mOpp">0</strong></div>
+<div class="metric"><small>🎬 Konten direncanakan</small><strong id="mContent">0</strong></div>
+<div class="metric"><small>🛍️ Produk dirancang</small><strong id="mProduct">0</strong></div>
+<div class="metric"><small>💵 Pendapatan tercatat</small><strong>Rp 0</strong></div>
 </div>
-<span class="muted" style="font-size:11px">4 DEPARTEMEN</span>
-</div>
-
-<div class="scene">
-<div class="stars"></div><div class="moon"></div>
-<div class="hill"></div><div class="road"></div>
-<div class="buildrow">
-<button class="building b1" onclick="openRoom('ideas')">
-<span class="ico">💡</span><strong>IDEA LAB</strong>
-<div class="windows"></div><small>Research</small>
-</button>
-<button class="building b2" onclick="openRoom('script')">
-<span class="ico">✍️</span><strong>SCRIPT STUDIO</strong>
-<div class="windows"></div><small>Writing</small>
-</button>
-<button class="building b3" onclick="openRoom('video')">
-<span class="ico">🎬</span><strong>VIDEO STUDIO</strong>
-<div class="windows"></div><small>Production</small>
-</button>
-<button class="building b4" onclick="openRoom('publish')">
-<span class="ico">📡</span><strong>PUBLISHING</strong>
-<div class="windows"></div><small>Approval</small>
-</button>
-</div>
-<div class="person p1">🚶</div>
-<div class="person p2">🧑‍💻</div>
-<div class="person p3">🚶‍♀️</div>
-<div class="hint">KLIK GEDUNG UNTUK MASUK</div>
-</div>
-</section>
-
-<div class="heading"><h2>Departemen</h2><span>4 ruang kerja</span></div>
-<section class="rooms">
-<article class="card">
-<div class="icon">💡</div><h3>Idea Lab</h3>
-<p>Temukan topik fakta, teknologi, sains, dan sejarah.</p>
-<button class="btn" onclick="openRoom('ideas')">Masuk ruangan →</button>
-</article>
-<article class="card">
-<div class="icon">✍️</div><h3>Script Studio</h3>
-<p>Susun naskah video pendek dan caption.</p>
-<button class="btn" onclick="openRoom('script')">Masuk ruangan →</button>
-</article>
-<article class="card">
-<div class="icon">🎬</div><h3>Video Studio</h3>
-<p>Rencanakan visual, suara, dan produksi video.</p>
-<button class="btn" onclick="openRoom('video')">Masuk ruangan →</button>
-</article>
-<article class="card">
-<div class="icon">📡</div><h3>Publishing Room</h3>
-<p>Periksa dan setujui konten sebelum dipublikasikan.</p>
-<button class="btn" onclick="openRoom('publish')">Masuk ruangan →</button>
-</article>
-</section>
-
-<section id="panel" class="panel">
-<div class="paneltop">
-<h2 id="title">Ruang kerja</h2>
-<button class="btn secondary" onclick="closeRoom()">✕ Tutup</button>
-</div>
-<p id="desc" class="muted" style="font-size:13px"></p>
-<div id="content"></div>
-</section>
-
-<div class="heading"><h2>Tim virtual</h2><span>Karakter demo</span></div>
-<section class="team">
-<div class="member">
-<div class="avatar">🧑‍🔬</div><b>Raka • Research</b>
-<small>Mencari bahan & fakta</small><div class="ready">● Siap bertugas</div>
-</div>
-<div class="member">
-<div class="avatar">👩‍💻</div><b>Naya • Writer</b>
-<small>Menyusun naskah</small><div class="ready">● Siap bertugas</div>
-</div>
-<div class="member">
-<div class="avatar">🧑‍🎨</div><b>Dio • Producer</b>
-<small>Merancang video</small><div class="ready">● Siap bertugas</div>
-</div>
-</section>
-
-<footer>
-NicoVerse • Explore More, Know More.<br>
-Versi interaktif awal. AI sungguhan dan koneksi media sosial belum diaktifkan.
-</footer>
-</main>
-
-<div id="toast" class="toast"></div>
-
+<div class="grid">
+<div class="panel"><h2>🏢 Peta Operasional</h2><div class="deptgrid" id="homeDepts"></div></div>
+<div class="panel"><h2>📌 Prioritas kerja</h2><div class="list" id="priorities"></div><div class="notice">AI, pencarian web terjadwal, pembuatan video, transaksi, dan posting otomatis belum aktif. Saat ini ini adalah dashboard dan alur kerja demo. Setiap publikasi atau pengeluaran tetap perlu persetujuan pemilik.</div></div>
+</div></section>
+<section id="opportunities" class="hidden"><div class="eyebrow">DIVISI 01</div><h1>💰 Money Hunter</h1><p class="muted">Mencari dan menilai sumber pendapatan dari berbagai jalur.</p><button class="action" onclick="addOpportunity()">+ Buat daftar peluang (contoh)</button><div class="list" id="oppList" style="margin-top:12px"></div></section>
+<section id="content" class="hidden"><div class="eyebrow">DIVISI 02</div><h1>🎬 Content Factory</h1><p class="muted">Riset niche, ide video, naskah, produksi dan distribusi.</p><label>Topik / niche<input id="topic" placeholder="Contoh: fakta teknologi, sejarah, tips belajar"></label><label>Platform<select id="platform"><option>TikTok</option><option>YouTube Shorts</option><option>Instagram Reels</option><option>Facebook</option><option>YouTube panjang</option></select></label><button class="action" onclick="addContent()">Simpan rencana konten</button><div class="list" id="contentList" style="margin-top:12px"></div></section>
+<section id="products" class="hidden"><div class="eyebrow">DIVISI 03</div><h1>🛍️ Digital Product Lab</h1><p class="muted">Merancang produk digital berdasarkan kebutuhan pasar.</p><label>Ide produk<input id="productName" placeholder="Contoh: template CV, planner belajar, preset desain"></label><label>Target pembeli<input id="buyer" placeholder="Siapa yang membutuhkan?"></label><button class="action" onclick="addProduct()">Simpan konsep produk</button><div class="list" id="productList" style="margin-top:12px"></div></section>
+<section id="business" class="hidden"><div class="eyebrow">DIVISI 04</div><h1>🚀 Business Development</h1><div class="list">
+<div class="item"><strong>Jasa konten untuk UMKM</strong><small>Validasi kebutuhan bisnis lokal, contoh portofolio, lalu tawarkan jasa secara jujur.</small></div>
+<div class="item"><strong>Website sederhana untuk usaha</strong><small>Riset masalah pelanggan dan buat prototipe sebelum menawarkan jasa.</small></div>
+<div class="item"><strong>Afiliasi dan rekomendasi produk</strong><small>Perlu cek syarat program, transparansi tautan afiliasi, dan aturan usia/platform.</small></div>
+<div class="item"><strong>Produk digital niche</strong><small>Template, worksheet, aset desain orisinal; uji minat sebelum membuat banyak.</small></div>
+</div></section>
+<section id="team" class="hidden"><div class="eyebrow">DIVISI 05</div><h1>👥 Karyawan NicoVerse</h1><p class="muted">40 peran kerja dalam 8 divisi. Peran-peran ini belum menjadi agen AI aktif.</p><div class="staff" id="staff"></div></section>
+<section id="approval" class="hidden"><div class="eyebrow">RUANG KENDALI PEMILIK</div><h1>✅ Persetujuan</h1><p class="muted">Semua konten atau tindakan publik harus diperiksa pemilik terlebih dahulu.</p><div class="list" id="approvalList"></div></section>
+<section id="finance" class="hidden"><div class="eyebrow">DIVISI 08</div><h1>📊 Keuangan & Monetisasi</h1><div class="metric"><small>Total pendapatan yang benar-benar tercatat</small><strong>Rp 0</strong></div><p class="muted">Belum ada transaksi atau integrasi pembayaran. Jangan masukkan data rekening, kata sandi, atau OTP ke dashboard demo ini.</p></section>
+</main></div>
 <script>
-const info={
-ideas:["💡 Idea Lab","Riset topik fakta, teknologi, sains, dan sejarah."],
-script:["✍️ Script Studio","Ubah ide menjadi naskah konten."],
-video:["🎬 Video Studio","Rencanakan visual, narasi, dan produksi video."],
-publish:["📡 Publishing Room","Semua konten menunggu persetujuan manual."]
-};
-
-let queue=JSON.parse(localStorage.getItem("nvQueue")||"[]");
-
-function openRoom(k){
-document.getElementById("title").textContent=info[k][0];
-document.getElementById("desc").textContent=info[k][1];
-document.getElementById("panel").classList.add("active");
-const c=document.getElementById("content");
-
-if(k==="ideas"){
-c.innerHTML=`
-<div class="grid">
-<div class="box">
-<h3>🔎 Generator ide demo</h3>
-<label>Kategori</label>
-<select id="cat">
-<option>Fakta menarik</option><option>Teknologi</option>
-<option>Sains</option><option>Sejarah</option>
-</select>
-<div class="actions"><button class="btn" onclick="idea()">Buat ide</button></div>
-<p id="result" class="note">Pilih kategori untuk melihat ide contoh.</p>
-</div>
-<div class="box">
-<h3>Alur riset</h3>
-<p class="note">1. Pilih kategori.<br>2. Tinjau ide awal.<br>
-3. Verifikasi dengan sumber tepercaya.<br>4. Lanjutkan ke penulisan naskah.</p>
-</div>
-</div>`;
-}
-
-if(k==="script"){
-c.innerHTML=`
-<div class="grid">
-<div class="box">
-<h3>📝 Penulis naskah</h3>
-<label>Judul konten</label><input id="stitle" placeholder="Judul konten">
-<label>Naskah</label><textarea id="sbody" placeholder="Tulis naskah di sini..."></textarea>
-<label>Platform tujuan</label>
-<select id="platform">
-<option>TikTok</option><option>YouTube Shorts</option>
-<option>Instagram Reels</option><option>Facebook</option>
-</select>
-<div class="actions"><button class="btn" onclick="saveDraft()">Simpan draft</button></div>
-</div>
-<div class="box">
-<h3>Tips naskah</h3>
-<p class="note">Buka dengan hook, sampaikan informasi dengan jelas,
-periksa fakta, lalu tutup dengan kesimpulan.</p>
-</div>
-</div>`;
-}
-
-if(k==="video"){
-c.innerHTML=`
-<div class="grid">
-<div class="box">
-<h3>🎞️ Rencana produksi</h3>
-<label>Judul video</label><input id="vtitle" placeholder="Judul video">
-<label>Gaya visual</label>
-<select id="style">
-<option>Dokumenter singkat</option><option>Animasi edukasi</option>
-<option>Visual fakta cepat</option>
-</select>
-<label>Catatan adegan</label>
-<textarea id="notes" placeholder="Gambaran visual per adegan..."></textarea>
-<div class="actions"><button class="btn" onclick="saveVideo()">Simpan rencana</button></div>
-</div>
-<div class="box">
-<h3>Checklist</h3>
-<p class="note">□ Naskah diperiksa<br>□ Narasi siap<br>
-□ Visual sesuai topik<br>□ Aset punya izin penggunaan<br>□ Hasil akhir ditinjau</p>
-</div>
-</div>`;
-}
-
-if(k==="publish"){
-c.innerHTML=`
-<div class="box">
-<h3>🛡️ Antrean persetujuan</h3>
-<p class="note">Tombol persetujuan hanya mengubah status demo.
-Tidak ada unggahan ke media sosial.</p>
-<div id="queue"></div>
-</div>`;
-renderQueue();
-}
-document.getElementById("panel").scrollIntoView({behavior:"smooth",block:"start"});
-}
-
-function closeRoom(){
-document.getElementById("panel").classList.remove("active");
-}
-
-function idea(){
-let x=document.getElementById("cat").value;
-let examples={
-"Fakta menarik":"Gurita memiliki tiga jantung. Telusuri fungsi masing-masing jantung.",
-"Teknologi":"Bagaimana GPS menentukan lokasi dari sinyal satelit?",
-"Sains":"Mengapa kilat terlihat sebelum suara guntur terdengar?",
-"Sejarah":"Bagaimana jalur perdagangan kuno menukar ilmu dan budaya?"
-};
-document.getElementById("result").textContent=
-"Ide contoh: "+examples[x]+" Verifikasi fakta sebelum digunakan.";
-}
-
-function add(title,detail){
-if(!title.trim()){toast("Isi judul terlebih dahulu.");return}
-queue.push({
-id:Date.now(),title,detail,status:"Menunggu persetujuan"
-});
-localStorage.setItem("nvQueue",JSON.stringify(queue));
-toast("Draft masuk antrean persetujuan.");
-}
-
-function saveDraft(){
-add(
-document.getElementById("stitle").value,
-document.getElementById("platform").value+" • "+
-document.getElementById("sbody").value
-);
-}
-
-function saveVideo(){
-add(
-document.getElementById("vtitle").value,
-"Rencana video • "+document.getElementById("style").value+
-" • "+document.getElementById("notes").value
-);
-}
-
-function renderQueue(){
-let q=document.getElementById("queue");
-if(!q)return;
-if(!queue.length){
-q.innerHTML='<p class="note">Belum ada konten dalam antrean.</p>';
-return;
-}
-q.innerHTML=queue.map(x=>`
-<div class="item">
-<div>
-<b>${esc(x.title)}</b>
-<small>${esc(x.detail.slice(0,90))}</small>
-<small style="color:${x.status.startsWith("Disetujui")?"#62e6ae":"#ffd27a"}">${x.status}</small>
-</div>
-<div class="actions">
-<button class="btn green" onclick="approve(${x.id})">Setujui</button>
-<button class="btn secondary" onclick="removeItem(${x.id})">Hapus</button>
-</div>
-</div>`).join("");
-}
-
-function approve(id){
-let x=queue.find(a=>a.id===id);
-if(x){
-x.status="Disetujui (demo)";
-localStorage.setItem("nvQueue",JSON.stringify(queue));
-renderQueue();
-toast("Disetujui dalam demo, belum dipublikasikan.");
-}
-}
-
-function removeItem(id){
-queue=queue.filter(x=>x.id!==id);
-localStorage.setItem("nvQueue",JSON.stringify(queue));
-renderQueue();
-}
-
-function esc(s){
-return String(s).replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
-}
-
-function toast(s){
-let t=document.getElementById("toast");
-t.textContent=s;t.classList.add("show");
-setTimeout(()=>t.classList.remove("show"),2200);
-}
-
-function clock(){
-document.getElementById("clock").textContent=
-new Date().toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit"});
-}
-clock();setInterval(clock,30000);
-</script>
-</body>
-</html>
+const departments=[
+["💰 Money Hunter","Riset peluang bisnis, sumber pendapatan, kebutuhan pasar",6],
+["🔎 Market Intelligence","Tren, kompetitor, riset audiens, validasi fakta",5],
+["🎬 Content Factory","Ide, naskah, storyboard, desain, suara, editing",8],
+["🛍️ Digital Product Lab","Riset produk, pembuatan, pemeriksaan, katalog",5],
+["🚀 Business Development","Jasa, website, aplikasi, kemitraan",4],
+["📣 Marketing & Distribution","SEO, media sosial, kampanye, komunitas",5],
+["📊 Finance & Analytics","Anggaran, pencatatan, analisis performa",4],
+["🛡️ Quality & Risk","Fakta, hak cipta, keamanan, kepatuhan",3]
+];
+const staff=[
+["CEO AI","Strategi & prioritas"],["COO AI","Operasional"],["CFO AI","Anggaran"],["CTO AI","Teknologi"],["Money Hunter","Cari peluang pendapatan"],["Market Researcher","Riset kebutuhan pasar"],["Trend Analyst","Pantau tren"],["Competitor Analyst","Analisis pesaing"],["Fact Checker","Verifikasi fakta"],["Audience Analyst","Riset audiens"],["Content Strategist","Strategi konten"],["Idea Creator","Ide video"],["Scriptwriter","Naskah"],["Copywriter","Caption & promosi"],["Content Planner","Kalender konten"],["Creative Director","Konsep kreatif"],["Storyboard Artist","Alur visual"],["Graphic Designer","Desain"],["AI Image Creator","Aset visual"],["Voice Artist","Narasi"],["Video Producer","Produksi"],["Video Editor","Editing"],["Motion Designer","Animasi"],["Sound Designer","Audio"],["Product Researcher","Riset produk"],["Product Designer","Desain produk digital"],["Template Creator","Template orisinal"],["Product QA","Uji kualitas"],["Catalog Manager","Katalog"],["Business Developer","Peluang jasa"],["Web Planner","Rencana website"],["Partnership Scout","Kemitraan"],["SEO Specialist","Optimasi pencarian"],["TikTok Specialist","Distribusi TikTok"],["YouTube Specialist","Distribusi YouTube"],["Social Media Manager","Kelola kanal"],["Community Manager","Komunitas"],["Finance Analyst","Keuangan"],["Performance Analyst","Kinerja"],["Copyright & Safety Checker","Hak cipta & keamanan"]
+];
+let opportunities=JSON.parse(localStorage.getItem("nv_opp")||"[]"), contents=JSON.parse(localStorage.getItem("nv_cont")||"[]"), products=JSON.parse(localStorage.getItem("nv_prod")||"[]");
+function save(){localStorage.setItem("nv_opp",JSON.stringify(opportunities));localStorage.setItem("nv_cont",JSON.stringify(contents));localStorage.setItem("nv_prod",JSON.stringify(products));render()}
+function show(id,btn){document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));document.getElementById(id).classList.remove("hidden");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active")}
+function addOpportunity(){["Jasa pembuatan konten untuk UMKM","Produk digital berupa template orisinal","Website sederhana untuk usaha kecil","Konten edukasi dengan potensi monetisasi"].forEach((x,i)=>opportunities.push({name:x,detail:["Uji dengan 3 calon pelanggan dan hitung waktu produksi.","Validasi minat dengan contoh gratis sebelum membuat paket.","Cari satu masalah nyata dan buat demo sederhana.","Periksa syarat monetisasi platform dan bangun audiens orisinal."][i],status:"Perlu riset"}));save()}
+function addContent(){let t=document.getElementById("topic").value.trim();if(!t)return alert("Isi topik dulu.");contents.push({name:t,platform:document.getElementById("platform").value,status:"Menunggu persetujuan"});save();document.getElementById("topic").value=""}
+function addProduct(){let n=document.getElementById("productName").value.trim(),b=document.getElementById("buyer").value.trim();if(!n)return alert("Isi ide produk dulu.");products.push({name:n,buyer:b,status:"Konsep — perlu validasi"});save();document.getElementById("productName").value="";document.getElementById("buyer").value=""}
+function renderList(id,arr,kind){document.getElementById(id).innerHTML=arr.length?arr.map((x,i)=>`<div class="item"><span class="status">${x.status}</span><strong>${x.name}</strong><small>${x.detail||x.platform||x.buyer||""}</small>${kind==="approval"?`<br><button class="action" onclick="approve(${i})">Setujui (demo)</button>`:""}</div>`).join(""):'<div class="item muted">Belum ada pekerjaan.</div>'}
+function approve(i){contents[i].status="Disetujui (demo) — belum dipublikasikan";save()}
+function render(){document.getElementById("mOpp").textContent=opportunities.length;document.getElementById("mContent").textContent=contents.length;document.getElementById("mProduct").textContent=products.length;renderList("oppList",opportunities);renderList("contentList",contents);renderList("productList",products);renderList("approvalList",contents,"approval")}
+document.getElementById("homeDepts").innerHTML=departments.map(d=>`<div class="dept"><span class="rolecount">${d[2]} PERAN</span><b>${d[0]}</b><p>${d[1]}</p></div>`).join("");
+document.getElementById("staff").innerHTML=staff.map((s,i)=>`<div class="person"><b>${String(i+1).padStart(2,"0")}. ${s[0]}</b><small>${s[1]}</small></div>`).join("");
+document.getElementById("priorities").innerHTML=["Cari peluang dengan biaya awal rendah","Validasi kebutuhan sebelum membuat produk","Buat konten orisinal dan periksa hak cipta","Minta persetujuan sebelum publikasi"].map(x=>`<div class="item">${x}</div>`).join("");
+render();
+</script></body></html>
