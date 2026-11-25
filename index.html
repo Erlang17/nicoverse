@@ -8,7 +8,7 @@
 </style></head>
 <body>
 <header><div class="brand"><div class="logo">N</div><div>NicoVerse<small>EXPLORE MORE, KNOW MORE</small></div></div><div style="display:flex;gap:8px;align-items:center"><span class="pill live" id="status">● DASHBOARD AKTIF</span><span class="pill hide">👑 Pemilik: Nico</span></div></header>
-<div class="layout"><nav aria-label="Navigasi"><button class="active" data-target="home">⌂ Beranda</button><button data-target="queue">☑ Konten</button><button data-target="teamSection">👥 Tim</button><button data-target="settings">⚙ Pengaturan</button><div class="owner">RUANG KENDALI<b>👑 Pemilik</b></div></nav>
+<div class="layout"><nav aria-label="Navigasi"><button class="active" data-target="home">⌂ Beranda</button><button data-target="queue">☑ Konten</button><button data-target="teamSection">👥 Tim</button><button data-target="aiPanel">🤖 AI Studio</button><button data-target="settings">⚙ Pengaturan</button><div class="owner">RUANG KENDALI<b>👑 Pemilik</b></div></nav>
 <main id="home"><div class="title"><div><h1>Dashboard NicoVerse</h1><div class="sub">Pusat pemantauan konten dan tim virtual.</div></div><span class="pill live" id="clock">● SIAP</span></div>
 <section class="office"><div class="officebar"><b>🏢 NICOVERSE HQ · LANTAI 01</b><span style="color:#9fb7d0">Kantor virtual</span></div><svg class="scene" viewBox="0 0 900 440" role="img" aria-label="Ilustrasi kantor virtual"><defs><linearGradient id="wall" x2="0" y2="1"><stop stop-color="#1a4262"/><stop offset="1" stop-color="#10253d"/></linearGradient><linearGradient id="floor" x2="0" y2="1"><stop stop-color="#1b3a56"/><stop offset="1" stop-color="#10243a"/></linearGradient></defs><path d="M70 85 450 15 830 85 450 165Z" fill="url(#wall)" stroke="#4a7798" stroke-width="2"/><path d="M70 85V290L450 425V165Z" fill="#10263d" stroke="#3e6687" stroke-width="2"/><path d="M830 85V290L450 425V165Z" fill="#0d2035" stroke="#3e6687" stroke-width="2"/><path d="M70 290 450 165 830 290 450 425Z" fill="url(#floor)" stroke="#4b759b" stroke-width="2"/><path d="M150 315 530 190M230 343 610 218M310 372 690 247M390 400 770 275M150 265 530 390M230 238 610 363M310 212 690 337M390 185 770 310" stroke="#315675" opacity=".7"/><g><path class="station" d="M330 75 450 48 570 75 450 105Z"/><text class="label" x="450" y="82" text-anchor="middle">RISET & TREN</text></g><g><path class="station" d="M95 235 205 195 305 235 195 278Z"/><text class="label" x="200" y="235" text-anchor="middle">IDE STUDIO</text></g><g><path class="station" d="M595 235 695 195 805 235 705 278Z"/><text class="label" x="700" y="235" text-anchor="middle">SCRIPT ROOM</text></g><g><path class="station" d="M180 335 280 295 380 335 280 375Z"/><text class="label" x="280" y="337" text-anchor="middle">VIDEO STUDIO</text></g><g><path class="station" d="M520 335 620 295 720 335 620 375Z"/><text class="label" x="620" y="337" text-anchor="middle">EDITING</text></g><g id="workers"></g></svg></section>
 <div class="metrics"><div class="metric"><span>Karyawan virtual</span><b id="staffCount">7</b></div><div class="metric"><span>Aktivitas simulasi</span><b id="working">0</b></div><div class="metric"><span>Antrean konten</span><b id="queueCount">0</b></div><div class="metric"><span>Posting otomatis</span><b>OFF</b></div></div>
@@ -16,6 +16,23 @@
 <section class="panel" id="teamSection"><h2>👥 Tim virtual NicoVerse</h2><div class="team" id="team"></div><div class="detail" id="detail" style="margin-top:10px">Pilih anggota tim untuk melihat tugasnya.</div></section>
 <section class="panel" id="queue"><h2>🗂️ Papan Konten — persetujuan pemilik</h2><div class="detail">Tambahkan ide dan naskah. Semua draft tetap menunggu pemeriksaanmu.</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0"><input id="contentTitle" placeholder="Judul / ide konten" aria-label="Judul konten"><select id="contentPlatform" aria-label="Platform"><option>YouTube Shorts</option><option>TikTok</option><option>Instagram Reels</option><option>Facebook Reels</option></select></div><textarea id="contentScript" rows="3" placeholder="Catatan atau naskah konten..."></textarea><div class="controls"><button class="action primary" id="addContent">＋ Tambah ke antrean</button><button class="action" id="clearContent">Hapus semua draft</button></div><div id="contentList"></div><div class="notice">Draft disimpan di browser/perangkat ini. Belum membuat video atau mengunggah konten ke media sosial.</div></section>
 <section class="panel"><h2>📋 Ringkasan alur kerja</h2><div class="task"><span>Riset dan pemilihan ide</span><b class="state">Belum terhubung</b></div><div class="task"><span>Penulisan naskah AI</span><b class="state">Belum terhubung</b></div><div class="task"><span>Produksi video</span><b class="state">Belum terhubung</b></div><div class="task"><span>Persetujuan pemilik</span><b class="state">Wajib</b></div><div class="task"><span>Publikasi otomatis</span><b class="state">Nonaktif</b></div><div class="notice">Ini dashboard prototipe. Gerakan tim adalah simulasi, bukan 7 agen AI yang sedang bekerja. Integrasi AI, pembuat video, tren langsung, dan akun media sosial belum aktif.</div></section>
+
+<section class="panel" id="aiPanel">
+ <h2>🤖 NicoVerse AI Studio</h2>
+ <div class="detail">Terhubung ke Cloudflare Worker NicoVerse. AI membuat ide atau naskah; hasilnya tidak dipublikasikan otomatis.</div>
+ <label class="detail" for="aiRole">Peran AI</label>
+ <select id="aiRole">
+  <option>Trend Analyst</option><option>Content Strategist</option><option>Idea Creator</option>
+  <option>Scriptwriter</option><option>Fact Checker</option><option>SEO Specialist</option>
+ </select>
+ <label class="detail" for="aiTask">Perintah untuk AI</label>
+ <textarea id="aiTask" rows="4" maxlength="3000" placeholder="Contoh: Buat 5 ide YouTube Shorts tentang teknologi dan sains. Sertakan hook dan sumber fakta yang perlu diverifikasi."></textarea>
+ <div class="controls"><button class="action primary" id="runAI">Jalankan AI</button><button class="action" id="saveAIResult" disabled>Simpan hasil sebagai draft</button></div>
+ <div class="detail" id="aiStatus" aria-live="polite">Status: belum diuji.</div>
+ <div class="content-card"><div class="script" id="aiResult">Hasil AI akan muncul di sini.</div></div>
+ <div class="notice">Koneksi menggunakan endpoint Worker yang sudah ada. Jika muncul error, jangan bagikan token atau rahasia; cukup kirim pesan errornya.</div>
+</section>
+
 <section class="panel" id="settings"><h2>🔒 Kontrol pemilik</h2><div class="detail">Tidak ada konten yang boleh dipublikasikan tanpa persetujuan pemilik. Persetujuan di prototipe hanya mengubah status draft secara lokal.</div><div class="notice">Jangan masukkan kata sandi, token API, atau informasi rahasia ke papan konten.</div></section></main></div>
 <script>
 'use strict';
@@ -35,4 +52,50 @@ function saveContent(){try{localStorage.setItem(contentKey,JSON.stringify(conten
 function renderContent(){const box=document.getElementById('contentList');box.replaceChildren();document.getElementById('queueCount').textContent=contentItems.length;if(!contentItems.length){const empty=document.createElement('div');empty.className='detail';empty.textContent='Belum ada draft konten.';box.append(empty);return}contentItems.forEach((item,index)=>{const card=document.createElement('div');card.className='content-card';const title=document.createElement('b');title.textContent=item.title;const meta=document.createElement('div');meta.className='meta';meta.textContent=`${item.platform} · ${item.status}`;const script=document.createElement('div');script.className='script';script.textContent=item.script||'Belum ada naskah.';const row=document.createElement('div');row.className='controls';const approve=document.createElement('button');approve.className='action';approve.textContent=item.status==='Disetujui (lokal)'?'↶ Batalkan persetujuan':'✓ Setujui draft';approve.addEventListener('click',()=>{item.status=item.status==='Disetujui (lokal)'?'Menunggu review':'Disetujui (lokal)';saveContent()});const remove=document.createElement('button');remove.className='action';remove.textContent='Hapus';remove.addEventListener('click',()=>{contentItems.splice(index,1);saveContent()});row.append(approve,remove);card.append(title,meta,script,row);box.append(card)})}
 document.getElementById('addContent').addEventListener('click',()=>{const title=document.getElementById('contentTitle').value.trim();if(!title){alert('Isi judul atau ide konten dulu.');return}contentItems.unshift({title,platform:document.getElementById('contentPlatform').value,script:document.getElementById('contentScript').value.trim(),status:'Menunggu review',createdAt:new Date().toISOString()});document.getElementById('contentTitle').value='';document.getElementById('contentScript').value='';saveContent()});document.getElementById('clearContent').addEventListener('click',()=>{if(confirm('Hapus semua draft yang tersimpan di browser ini?')){contentItems=[];saveContent()}});
 renderTeam();select(0);renderContent();
+
+const WORKER_URL = "https://steep-unit-8a9b.nicoerlangga01.workers.dev";
+let lastAIResult = "";
+document.getElementById("runAI").addEventListener("click", async () => {
+ const button = document.getElementById("runAI");
+ const status = document.getElementById("aiStatus");
+ const output = document.getElementById("aiResult");
+ const task = document.getElementById("aiTask").value.trim();
+ const role = document.getElementById("aiRole").value;
+ if (!task) { status.textContent = "Isi perintah terlebih dahulu."; return; }
+ button.disabled = true;
+ document.getElementById("saveAIResult").disabled = true;
+ status.textContent = "Menghubungkan ke Cloudflare AI…";
+ output.textContent = "AI sedang bekerja…";
+ try {
+  const response = await fetch(WORKER_URL + "/api/agent", {
+   method: "POST",
+   headers: {"Content-Type":"application/json"},
+   body: JSON.stringify({role, task})
+  });
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || data.message || ("HTTP " + response.status));
+  const result = data.result ?? data.response ?? data.output ?? data;
+  lastAIResult = typeof result === "string" ? result : JSON.stringify(result, null, 2);
+  output.textContent = lastAIResult;
+  status.textContent = "AI selesai. Periksa hasil sebelum menyimpan.";
+  document.getElementById("saveAIResult").disabled = false;
+ } catch (error) {
+  output.textContent = "Koneksi AI gagal: " + error.message;
+  status.textContent = "Gagal. Periksa endpoint Worker, metode POST, dan CORS.";
+ } finally { button.disabled = false; }
+});
+document.getElementById("saveAIResult").addEventListener("click", () => {
+ if (!lastAIResult) return;
+ const title = "Draft AI — " + new Date().toLocaleString("id-ID");
+ contentItems.unshift({
+  title,
+  platform: document.getElementById("contentPlatform").value,
+  script: lastAIResult,
+  status: "Menunggu review",
+  createdAt: new Date().toISOString()
+ });
+ saveContent();
+ document.getElementById("aiStatus").textContent = "Hasil disimpan ke antrean draft. Belum dipublikasikan.";
+});
+
 </script></body></html>
